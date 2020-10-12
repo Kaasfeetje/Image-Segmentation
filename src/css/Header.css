@@ -4,6 +4,9 @@
     justify-content: space-between;
     background-color: #646881;
     padding: 0.5rem;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
 }
 
 .header--logo {
@@ -24,6 +27,8 @@
     color: #f3f4f6;
     padding: 0.5rem;
     border-radius: 0.25rem;
+    cursor: pointer;
+    margin-top: 2px;
     transition: 0.3s;
 }
 
@@ -45,4 +50,8 @@
 .header--option-dangerous:hover {
     background-color: #b60000;
     color: #f3f4f6;
+}
+
+.header--option-icon {
+    margin-left: 5px;
 }

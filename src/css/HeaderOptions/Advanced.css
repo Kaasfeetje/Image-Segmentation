@@ -1,0 +1,40 @@
+.advanced {
+    margin-top: 10px;
+    position: absolute;
+    background-color: #646881;
+    padding: 1rem;
+    color: white;
+}
+
+.advanced-btn {
+    border: 1px solid #5ad2f4;
+    background-color: #646881;
+    color: #f3f4f6;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    margin-top: 2px;
+
+    transition: 0.3s;
+}
+
+.advanced-btn:hover {
+    background-color: #5ad2f4;
+    color: #646881;
+}
+
+.advanced-btn-dangerous {
+    border-color: #b60000;
+    background-color: #646881;
+    margin: 0 auto;
+}
+
+.advanced-btn-dangerous:hover {
+    background-color: #b60000;
+    color: #f3f4f6;
+}
+
+.advanced-revert {
+    display: flex;
+    justify-content: space-between;
+}

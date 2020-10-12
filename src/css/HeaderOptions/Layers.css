@@ -1,0 +1,44 @@
+.layers {
+    margin-top: 10px;
+    position: absolute;
+    background-color: #646881;
+    padding: 1rem;
+    color: white;
+}
+
+.layers-head {
+    display: flex;
+    justify-content: space-between;
+}
+
+.layers-head--mask {
+    display: flex;
+    align-items: center;
+    background-color: #404e4d;
+    width: 50%;
+    border-radius: 0.25rem;
+}
+
+.layers-head--mask p {
+    width: 70%;
+    padding: 0.5rem;
+}
+
+.layers-head--mask input {
+    background-color: #536564;
+    height: 100%;
+    border: none;
+    margin-left: 10px;
+    width: 25%;
+    font-size: larger;
+    text-align: center;
+    color: #f3f4f6;
+}
+
+.layers-content {
+    background-color: #f3f4f6;
+    color: #646881;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    margin-top: 1rem;
+}

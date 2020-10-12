@@ -1,0 +1,72 @@
+.modal {
+    position: fixed;
+    z-index: 500;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    border: 1px solid #888;
+    width: 60%;
+}
+
+.modal-header {
+    font-size: larger;
+    font-weight: bold;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: rgba(0, 0, 0, 0.8);
+    padding: 1rem;
+}
+
+.modal-contentbox {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    margin-top: 1rem;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.modal-button {
+    border-width: 2px;
+    border-style: solid;
+    padding: 0.5rem;
+    background-color: white;
+    transition: 0.3s;
+}
+
+.modal-button:focus {
+    outline: none;
+}
+
+.modal-button:hover {
+    border-radius: 0.25rem;
+    opacity: 0.9;
+}
+
+.modal-button-negative {
+    border-color: red;
+    color: red;
+}
+
+.modal-button-positive {
+    border-color: green;
+    color: green;
+}
+
+.modal-form-item {
+    width: 40%;
+}

@@ -1,0 +1,11 @@
+.upload-image {
+    margin-top: 10px;
+    position: absolute;
+    background-color: #646881;
+    padding: 1rem;
+    color: white;
+}
+
+.upload-image--header {
+    padding-bottom: 0.5rem;
+}
