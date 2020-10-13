@@ -1,0 +1,25 @@
+.table {
+    width: 100%;
+    text-align: center;
+}
+
+.table-row {
+    display: flex;
+    justify-content: space-around;
+    padding: 0.5rem;
+    align-items: center;
+    border: 1px solid black;
+    cursor: pointer;
+    margin-bottom: 0.25rem;
+}
+
+.table-header {
+    font-weight: bold;
+    border: none;
+    cursor: default;
+}
+
+.table-button {
+    border: none;
+    background: none;
+}

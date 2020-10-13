@@ -1,9 +1,26 @@
 import panzoom from "panzoom";
 import React, { useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
-import { addPoint, updatePoint, finishPath } from "../../actions";
+import {
+    addPoint,
+    updatePoint,
+    finishPath,
+    addLayer,
+    deleteLastPoint,
+} from "../../actions";
 
-function Canvas({ points, paths, updatePoint, finishPath, addPoint }) {
+function Canvas({
+    points,
+    layers,
+    paths,
+    activeColor,
+    amountOfPaths,
+    addLayer,
+    updatePoint,
+    deleteLastPoint,
+    finishPath,
+    addPoint,
+}) {
     const [transform, setTransform] = useState({ x: 0, y: 0, scale: 1 });
     const [mouseDown, setMouseDown] = useState(false);
     const [selectedPoint, setSelectedPoint] = useState(null);
@@ -29,8 +46,14 @@ function Canvas({ points, paths, updatePoint, finishPath, addPoint }) {
 
     const onKeyDown = (e) => {
         if (e.code === "Enter") {
-            console.log("Did it");
+            addLayer(activeColor, amountOfPaths);
             finishPath();
+        }
+        if (e.ctrlKey) {
+            if (e.code === "KeyZ") {
+                console.log("Ctrl + z");
+                deleteLastPoint();
+            }
         }
     };
 
@@ -88,12 +111,15 @@ function Canvas({ points, paths, updatePoint, finishPath, addPoint }) {
         ></circle>
     ));
 
-    const renderPaths = paths.map((el) => (
-        <polygon
-            points={el}
-            style={{ stroke: "white", fill: "none" }}
-        ></polygon>
-    ));
+    const renderPaths = () => {
+        layers.sort((a, b) => b.id - a.id);
+        return layers.map((el, i) => (
+            <polygon
+                points={paths[i]}
+                style={{ stroke: "white", fill: `${el.color}` }}
+            ></polygon>
+        ));
+    };
 
     return (
         <div
@@ -115,16 +141,26 @@ function Canvas({ points, paths, updatePoint, finishPath, addPoint }) {
                     style={{ stroke: "white", fill: "none" }}
                 />
                 {renderCircles}
-                {renderPaths}
+                {renderPaths()}
             </svg>
         </div>
     );
 }
 
 const mapStateToProps = (state) => {
-    return { points: state.points.points, paths: state.points.paths };
+    return {
+        points: state.points.points,
+        paths: state.points.paths,
+        layers: state.layers.layers,
+        activeColor: state.colors.colors[state.colors.selectedColor],
+        amountOfPaths: state.points.paths.length,
+    };
 };
 
-export default connect(mapStateToProps, { addPoint, updatePoint, finishPath })(
-    Canvas
-);
+export default connect(mapStateToProps, {
+    addPoint,
+    updatePoint,
+    finishPath,
+    addLayer,
+    deleteLastPoint,
+})(Canvas);

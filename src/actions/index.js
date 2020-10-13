@@ -1,10 +1,12 @@
 import {
+    ADD_COLOR,
     ADD_LAYER,
     ADD_POINT,
+    DELETE_LAST_POINT,
     FINISH_PATH,
-    SELECT_LAYER,
+    SELECT_COLOR,
     SELECT_NAV,
-    UPDATE_LAYER,
+    UPDATE_COLOR,
     UPDATE_POINT,
 } from "../actions/types";
 
@@ -29,29 +31,45 @@ export const updatePoint = (point, index) => {
     };
 };
 
+export const deleteLastPoint = () => {
+    return {
+        type: DELETE_LAST_POINT,
+    };
+};
+
 export const finishPath = () => {
     return {
         type: FINISH_PATH,
     };
 };
 
-export const addLayer = (id) => {
+export const addColor = (id) => {
     return {
-        type: ADD_LAYER,
+        type: ADD_COLOR,
         payload: { id },
     };
 };
 
-export const updateLayer = (id, name, color) => {
+export const updateColor = (id, name, color) => {
     return {
-        type: UPDATE_LAYER,
-        payload: { id, layer: { id, name, color } },
+        type: UPDATE_COLOR,
+        payload: { id, color: { id, name, color } },
     };
 };
 
-export const selectLayer = (id) => {
+export const selectColor = (id) => {
     return {
-        type: SELECT_LAYER,
+        type: SELECT_COLOR,
         payload: id,
+    };
+};
+
+export const addLayer = (color, pathID) => {
+    color.id = pathID;
+    color.opacity = 0.5;
+
+    return {
+        type: ADD_LAYER,
+        payload: color,
     };
 };

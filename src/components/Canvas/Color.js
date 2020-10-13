@@ -1,42 +1,42 @@
 import React, { useState } from "react";
 import Modal from "../Modal";
 
-import { updateLayer, selectLayer } from "../../actions";
+import { updateColor, selectColor } from "../../actions";
 import { connect } from "react-redux";
 
 import "../../css/Layer.css";
-function Layer({ layer, selectedLayer, selectLayer, updateLayer }) {
+function Color({ color, selectedColor, selectColor, updateColor }) {
     const [modalOpen, setModalOpen] = useState(false);
-    const [pickedColor, setColor] = useState(layer.color);
-    const [name, setName] = useState(layer.name);
+    const [pickedColor, setColor] = useState(color.color);
+    const [name, setName] = useState(color.name);
 
     const onSave = (e) => {
-        console.log(pickedColor);
-        console.log(name);
-        updateLayer(
-            layer.id,
-            name == "" ? layer.name : name,
-            pickedColor == undefined ? layer.color : pickedColor
+        updateColor(
+            color.id,
+            // eslint-disable-next-line eqeqeq
+            name == "" ? color.name : name,
+            // eslint-disable-next-line eqeqeq
+            pickedColor == undefined ? color.color : pickedColor
         );
         setModalOpen(false);
     };
 
     const onClick = (e) => {
-        if (selectedLayer === layer.id) {
+        if (selectedColor === color.id) {
             setModalOpen(true);
         } else {
-            selectLayer(layer.id);
+            selectColor(color.id);
         }
     };
-
+    
     return (
         <>
             <button
                 style={{
-                    backgroundColor: layer.color,
+                    backgroundColor: color.color,
                     color: "white",
                     border:
-                        selectedLayer !== layer.id
+                        selectedColor !== color.id
                             ? "none"
                             : "2px dotted green",
                     padding: "1rem",
@@ -44,7 +44,7 @@ function Layer({ layer, selectedLayer, selectLayer, updateLayer }) {
                 className="layer"
                 onClick={onClick}
             >
-                {layer.name}
+                {color.name}
             </button>
             {modalOpen === true && (
                 <Modal
@@ -95,7 +95,7 @@ function Layer({ layer, selectedLayer, selectLayer, updateLayer }) {
 }
 
 const mapStateToProps = (state) => {
-    return { selectedLayer: state.layers.selectedLayer };
+    return { selectedColor: state.colors.selectedColor };
 };
 
-export default connect(mapStateToProps, { updateLayer, selectLayer })(Layer);
+export default connect(mapStateToProps, { updateColor, selectColor})(Color);

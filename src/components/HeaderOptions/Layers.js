@@ -1,7 +1,12 @@
 import React from "react";
+import { connect } from "react-redux";
 
 import "../../css/HeaderOptions/Layers.css";
-function Layers() {
+import LayerTable from "./LayerTable";
+function Layers({ layers }) {
+    console.log(layers[0]);
+    const renderLayers = layers.map((el) => <p>{el.name}</p>);
+
     return (
         <div className="layers">
             <div className="layers-head">
@@ -16,10 +21,18 @@ function Layers() {
                 </div>
             </div>
             <div className="layers-content">
-                <p>No Layers Yet</p>
+                {layers.length !== 0 ? (
+                    <LayerTable layers={layers} />
+                ) : (
+                    <p>No Layers Yet</p>
+                )}
             </div>
         </div>
     );
 }
 
-export default Layers;
+const mapStateToProps = (state) => {
+    return { layers: state.layers.layers };
+};
+
+export default connect(mapStateToProps)(Layers);

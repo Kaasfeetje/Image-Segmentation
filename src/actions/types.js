@@ -1,7 +1,9 @@
 export const SELECT_NAV = "SELECT_NAV";
 export const ADD_POINT = "ADD_POINT";
 export const UPDATE_POINT = "UPDATE_POINT";
+export const DELETE_LAST_POINT = "DELETE_LAST_POINT"
 export const FINISH_PATH = "FINISHED_PATH";
+export const ADD_COLOR = "ADD_COLOR";
+export const UPDATE_COLOR = "UPDATE_COLOR";
+export const SELECT_COLOR = "SELECT_COLOR";
 export const ADD_LAYER = "ADD_LAYER";
-export const UPDATE_LAYER = "UPDATE_LAYER";
-export const SELECT_LAYER = "SELECT_LAYER";
