@@ -5,8 +5,11 @@ import {
     ADD_POINT,
     DELETE_LAST_POINT,
     FINISH_PATH,
+    NEXT_IMAGE,
+    PREVIOUS_IMAGE,
     SELECT_COLOR,
     SELECT_NAV,
+    SET_IMAGE,
     UPDATE_COLOR,
     UPDATE_POINT,
 } from "../actions/types";
@@ -79,5 +82,24 @@ export const addImage = (file) => {
     return {
         type: ADD_IMAGE,
         payload: file,
+    };
+};
+
+export const setImage = (index) => {
+    return {
+        type: SET_IMAGE,
+        payload: index,
+    };
+};
+
+export const nextImage = () => {
+    return {
+        type: NEXT_IMAGE,
+    };
+};
+
+export const previousImage = () => {
+    return {
+        type: PREVIOUS_IMAGE,
     };
 };

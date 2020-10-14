@@ -4,9 +4,6 @@ import { connect } from "react-redux";
 import "../../css/HeaderOptions/Layers.css";
 import LayerTable from "./LayerTable";
 function Layers({ layers }) {
-    console.log(layers[0]);
-    const renderLayers = layers.map((el) => <p>{el.name}</p>);
-
     return (
         <div className="layers">
             <div className="layers-head">

@@ -7,6 +7,8 @@ import {
     finishPath,
     addLayer,
     deleteLastPoint,
+    nextImage,
+    previousImage,
 } from "../../actions";
 
 function Canvas({
@@ -21,6 +23,8 @@ function Canvas({
     deleteLastPoint,
     finishPath,
     addPoint,
+    nextImage,
+    previousImage,
 }) {
     const [transform, setTransform] = useState({ x: 0, y: 0, scale: 1 });
     const [mouseDown, setMouseDown] = useState(false);
@@ -56,6 +60,12 @@ function Canvas({
                 console.log("Ctrl + z");
                 deleteLastPoint();
             }
+        }
+        if (e.code === "KeyD") {
+            nextImage();
+        }
+        if (e.code === "KeyA") {
+            previousImage();
         }
     };
 
@@ -161,7 +171,7 @@ const mapStateToProps = (state) => {
         layers: state.layers.layers,
         activeColor: state.colors.colors[state.colors.selectedColor],
         amountOfPaths: state.points.paths.length,
-        image: state.images.images[state.images.images.length - 1],
+        image: state.images.images[state.images.activeImage],
     };
 };
 
@@ -171,4 +181,6 @@ export default connect(mapStateToProps, {
     finishPath,
     addLayer,
     deleteLastPoint,
+    nextImage,
+    previousImage,
 })(Canvas);

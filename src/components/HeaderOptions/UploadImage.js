@@ -1,27 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { addImage } from "../../actions";
+import { addImage, setImage } from "../../actions";
 import "../../css/HeaderOptions/UploadImage.css";
-function UploadImage({ addImage }) {
+function UploadImage({ imagesLength, addImage, setImage }) {
     const onUpload = (e) => {
-        // const reader = new FileReader();
-        // const file = e.target.files[0];
-
-        // reader.onload = (function (aImg) {
-        //     return function (e) {
-        //         console.log("result", e.target.result);
-        //         const obj = {
-        //             file: e.target.result,
-        //             width: file.width,
-        //             height: file.height,
-        //         };
-        //         addImage(obj);
-        //     };
-        // })();
-        // reader.readAsDataURL(file);
         const reader = new FileReader();
         const file = e.target.files[0];
-
         reader.onload = (function (aImg) {
             return function (e) {
                 let i = new Image();
@@ -32,6 +16,7 @@ function UploadImage({ addImage }) {
                         height: i.height,
                     };
                     addImage(obj);
+                    setImage(imagesLength);
                 };
                 i.src = e.target.result;
             };
@@ -42,9 +27,13 @@ function UploadImage({ addImage }) {
     return (
         <div className="upload-image">
             <h3 className="upload-image--header">Upload Image</h3>
-            <input type="file" onChange={onUpload}></input>
+            <input type="file" accept="image/*" onChange={onUpload}></input>
         </div>
     );
 }
 
-export default connect(null, { addImage })(UploadImage);
+const mapStateToProps = (state) => {
+    return { imagesLength: state.images.images.length };
+};
+
+export default connect(mapStateToProps, { addImage, setImage })(UploadImage);
