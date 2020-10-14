@@ -5,6 +5,8 @@ import {
     ADD_POINT,
     DELETE_LAST_POINT,
     FINISH_PATH,
+    MOVE_LAYER_DOWN,
+    MOVE_LAYER_UP,
     NEXT_IMAGE,
     PREVIOUS_IMAGE,
     SELECT_COLOR,
@@ -69,12 +71,25 @@ export const selectColor = (id) => {
 };
 
 export const addLayer = (color, pathID) => {
-    color.id = pathID;
-    color.opacity = 0.5;
+    const obj = { ...color, id: pathID, opacity: 0.5 };
 
     return {
         type: ADD_LAYER,
-        payload: color,
+        payload: obj,
+    };
+};
+
+export const moveLayerUp = (id) => {
+    return {
+        type: MOVE_LAYER_UP,
+        payload: id,
+    };
+};
+
+export const moveLayerDown = (id) => {
+    return {
+        type: MOVE_LAYER_DOWN,
+        payload: id,
     };
 };
 

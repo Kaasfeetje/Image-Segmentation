@@ -18,7 +18,7 @@ function Canvas({
     layers,
     paths,
     activeColor,
-    amountOfPaths,
+    amountOfLayers,
     image,
     addLayer,
     updatePoint,
@@ -48,15 +48,13 @@ function Canvas({
         });
         panThing.zoomTo(transform.x, transform.y, transform.scale);
         panThing.moveTo(transform.x, transform.y);
-
-        // document.body.onkeydown = onKeyDown;
     }, [points]);
 
     const onKeyDown = (e) => {
         console.log(e);
         if (e.key === "Enter") {
             console.log("ENTER");
-            addLayer(activeColor, amountOfPaths);
+            addLayer(activeColor, amountOfLayers);
             finishPath();
         }
         if (e.ctrlKey) {
@@ -137,7 +135,6 @@ function Canvas({
     ));
 
     const renderPaths = () => {
-        layers.sort((a, b) => b.id - a.id);
         return layers.map((el) => (
             <polygon
                 points={paths[el.id]}
@@ -184,7 +181,7 @@ const mapStateToProps = (state) => {
         paths: state.points.paths,
         layers: state.layers.layers,
         activeColor: state.colors.colors[state.colors.selectedColor],
-        amountOfPaths: state.points.paths.length,
+        amountOfLayers: state.layers.layers.length,
         image: state.images.images[state.images.activeImage],
     };
 };

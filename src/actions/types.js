@@ -9,6 +9,8 @@ export const UPDATE_COLOR = "UPDATE_COLOR";
 export const SELECT_COLOR = "SELECT_COLOR";
 
 export const ADD_LAYER = "ADD_LAYER";
+export const MOVE_LAYER_DOWN = "MOVE_LAYER_DOWN";
+export const MOVE_LAYER_UP = "MOVE_LAYER_UP";
 
 export const ADD_IMAGE = "ADD_IMAGE";
 export const SET_IMAGE = "SET_IMAGE";

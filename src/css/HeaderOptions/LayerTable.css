@@ -9,7 +9,7 @@
     padding: 0.5rem;
     align-items: center;
     border: 1px solid black;
-    cursor: pointer;
+    /*cursor: pointer;*/
     margin-bottom: 0.25rem;
 }
 
@@ -22,4 +22,17 @@
 .table-button {
     border: none;
     background: none;
+}
+
+.table-updown {
+    margin-right: 20px;
+}
+
+.table-up {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.table-down {
+    cursor: pointer;
 }

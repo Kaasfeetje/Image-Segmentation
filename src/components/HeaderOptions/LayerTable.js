@@ -1,9 +1,21 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { connect } from "react-redux";
+import { moveLayerUp, moveLayerDown } from "../../actions";
 
 import "../../css/HeaderOptions/LayerTable.css";
-function LayerTable({ layers }) {
+function LayerTable({ layers, moveLayerUp, moveLayerDown }) {
+    const moveDown = (index) => {
+        console.log("DOWN");
+        moveLayerDown(index);
+    };
+
+    const moveUp = (index) => {
+        console.log("UP");
+        moveLayerUp(index);
+    };
+
     const renderLayers = () => {
-        layers.sort((a, b) => b.id - a.id);
         return layers.map((el, index) => (
             <div className="table-row">
                 <p>{index}</p>
@@ -15,6 +27,18 @@ function LayerTable({ layers }) {
                     }}
                 ></div>
                 <p>{el.name}</p>
+                <div className="table-updown">
+                    <FontAwesomeIcon
+                        onClick={() => moveUp(index)}
+                        className="table-up"
+                        icon="sort-up"
+                    />
+                    <FontAwesomeIcon
+                        onClick={() => moveDown(index)}
+                        className="table-down"
+                        icon="sort-down"
+                    />
+                </div>
                 <button className="table-button">X</button>
             </div>
         ));
@@ -26,6 +50,7 @@ function LayerTable({ layers }) {
                 <p>Layer</p>
                 <p>Color</p>
                 <p>Layer Name</p>
+                <p>Up/down</p>
                 <p>Delete</p>
             </div>
             {renderLayers()}
@@ -33,4 +58,4 @@ function LayerTable({ layers }) {
     );
 }
 
-export default LayerTable;
+export default connect(null, { moveLayerUp, moveLayerDown })(LayerTable);
