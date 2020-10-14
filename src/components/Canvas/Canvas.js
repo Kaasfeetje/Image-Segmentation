@@ -15,6 +15,7 @@ function Canvas({
     paths,
     activeColor,
     amountOfPaths,
+    image,
     addLayer,
     updatePoint,
     deleteLastPoint,
@@ -29,6 +30,7 @@ function Canvas({
 
     let panThing;
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         panThing = panzoom(document.querySelector("#image"), {
             maxZoom: 20,
             minZoom: 0.1,
@@ -129,11 +131,16 @@ function Canvas({
         >
             <svg
                 ref={ref}
-                style={{ backgroundImage: `url(logo512.png)` }}
+                style={{
+                    backgroundImage:
+                        image === undefined
+                            ? `url(logo512.png)`
+                            : `url(${image.file})`,
+                }}
                 onClick={onClick}
                 id="image"
-                width="512"
-                height="512"
+                width={image === undefined ? "512" : image.width}
+                height={image === undefined ? "512" : image.height}
             >
                 <polyline
                     points={points}
@@ -154,6 +161,7 @@ const mapStateToProps = (state) => {
         layers: state.layers.layers,
         activeColor: state.colors.colors[state.colors.selectedColor],
         amountOfPaths: state.points.paths.length,
+        image: state.images.images[state.images.images.length - 1],
     };
 };
 

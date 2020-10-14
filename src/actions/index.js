@@ -1,5 +1,6 @@
 import {
     ADD_COLOR,
+    ADD_IMAGE,
     ADD_LAYER,
     ADD_POINT,
     DELETE_LAST_POINT,
@@ -71,5 +72,12 @@ export const addLayer = (color, pathID) => {
     return {
         type: ADD_LAYER,
         payload: color,
+    };
+};
+
+export const addImage = (file) => {
+    return {
+        type: ADD_IMAGE,
+        payload: file,
     };
 };
