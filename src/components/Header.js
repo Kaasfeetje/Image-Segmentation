@@ -8,15 +8,7 @@ import UploadImage from "./HeaderOptions/UploadImage";
 import { selectNav } from "../actions";
 import { connect } from "react-redux";
 
-export const saveMask = (image) => {
-    let tempATag = document.createElement("a");
-    tempATag.href = image.file;
-    const splitName = image.name.split(".");
-    tempATag.download = `${splitName[0]}-mask.${splitName[1]}`;
-    document.body.appendChild(tempATag);
-    tempATag.click();
-    document.body.removeChild(tempATag);
-};
+import { createMask } from "../saveMask";
 
 function Header({ image, selectNav }) {
     const ref = useRef();
@@ -66,7 +58,7 @@ function Header({ image, selectNav }) {
                 <div>
                     <button
                         className="header--option"
-                        onClick={() => saveMask(image)}
+                        onClick={() => createMask()}
                     >
                         Save
                     </button>

@@ -11,7 +11,7 @@ import {
     previousImage,
 } from "../../actions";
 
-import { saveMask } from "../Header";
+import { createMask } from "../../saveMask";
 
 function Canvas({
     points,
@@ -78,7 +78,7 @@ function Canvas({
         ) {
             e.preventDefault();
             console.log("TRIED TO SAVE", image);
-            saveMask(image);
+            createMask();
         }
     };
 
@@ -138,10 +138,10 @@ function Canvas({
 
     const renderPaths = () => {
         layers.sort((a, b) => b.id - a.id);
-        return layers.map((el, i) => (
+        return layers.map((el) => (
             <polygon
-                points={paths[i]}
-                style={{ stroke: "white", fill: `${el.color}` }}
+                points={paths[el.id]}
+                style={{ stroke: "none", fill: `${el.color}` }}
             ></polygon>
         ));
     };
