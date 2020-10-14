@@ -14,6 +14,7 @@ function UploadImage({ imagesLength, addImage, setImage }) {
                         file: e.target.result,
                         width: i.width,
                         height: i.height,
+                        name: file.name,
                     };
                     addImage(obj);
                     setImage(imagesLength);

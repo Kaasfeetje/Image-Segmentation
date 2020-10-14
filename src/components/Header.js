@@ -7,7 +7,18 @@ import Layers from "./HeaderOptions/Layers";
 import UploadImage from "./HeaderOptions/UploadImage";
 import { selectNav } from "../actions";
 import { connect } from "react-redux";
-function Header({ selectNav }) {
+
+export const saveMask = (image) => {
+    let tempATag = document.createElement("a");
+    tempATag.href = image.file;
+    const splitName = image.name.split(".");
+    tempATag.download = `${splitName[0]}-mask.${splitName[1]}`;
+    document.body.appendChild(tempATag);
+    tempATag.click();
+    document.body.removeChild(tempATag);
+};
+
+function Header({ image, selectNav }) {
     const ref = useRef();
 
     useEffect(() => {
@@ -53,7 +64,12 @@ function Header({ selectNav }) {
                     id={3}
                 />
                 <div>
-                    <button className="header--option">Save</button>
+                    <button
+                        className="header--option"
+                        onClick={() => saveMask(image)}
+                    >
+                        Save
+                    </button>
                 </div>
                 <div>
                     <button className="header--option header--option-dangerous">
@@ -65,4 +81,8 @@ function Header({ selectNav }) {
     );
 }
 
-export default connect(null, { selectNav })(Header);
+const mapStateToProps = (state) => {
+    return { image: state.images.images[state.images.activeImage] };
+};
+
+export default connect(mapStateToProps, { selectNav })(Header);

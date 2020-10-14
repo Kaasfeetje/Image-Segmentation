@@ -11,6 +11,8 @@ import {
     previousImage,
 } from "../../actions";
 
+import { saveMask } from "../Header";
+
 function Canvas({
     points,
     layers,
@@ -47,25 +49,36 @@ function Canvas({
         panThing.zoomTo(transform.x, transform.y, transform.scale);
         panThing.moveTo(transform.x, transform.y);
 
-        document.body.onkeydown = onKeyDown;
+        // document.body.onkeydown = onKeyDown;
     }, [points]);
 
     const onKeyDown = (e) => {
-        if (e.code === "Enter") {
+        console.log(e);
+        if (e.key === "Enter") {
+            console.log("ENTER");
             addLayer(activeColor, amountOfPaths);
             finishPath();
         }
         if (e.ctrlKey) {
-            if (e.code === "KeyZ") {
+            if (e.key === "z") {
                 console.log("Ctrl + z");
                 deleteLastPoint();
             }
         }
-        if (e.code === "KeyD") {
+        if (e.key === "d") {
             nextImage();
         }
-        if (e.code === "KeyA") {
+        if (e.key === "a") {
             previousImage();
+        }
+        if (
+            // eslint-disable-next-line eqeqeq
+            e.keyCode == 83 &&
+            (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)
+        ) {
+            e.preventDefault();
+            console.log("TRIED TO SAVE", image);
+            saveMask(image);
         }
     };
 
@@ -138,6 +151,7 @@ function Canvas({
             className="canvas"
             onMouseUp={(e) => setMouseDown(false)}
             onMouseMove={(e) => onMouseMoved(e, selectedPoint)}
+            onKeyDown={(e) => onKeyDown(e)}
         >
             <svg
                 ref={ref}
