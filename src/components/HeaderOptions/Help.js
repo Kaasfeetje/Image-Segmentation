@@ -25,6 +25,14 @@ function Help() {
                         <span>Alt+Left Click</span> <span>Pan</span>
                     </li>
                     <li>
+                        <span>A</span>
+                        <span>Previous Image</span>
+                    </li>
+                    <li>
+                        <span>D</span>
+                        <span>Next Image Image</span>
+                    </li>
+                    <li>
                         <span>Ctrl+Z</span> <span>undo</span>
                     </li>
                     {/* <li>
