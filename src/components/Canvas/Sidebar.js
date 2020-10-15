@@ -8,7 +8,7 @@ function Sidebar({ colors = [], addColor }) {
         addColor(colors.length);
     };
 
-    const renderColors = colors.map((el) => <Color color={el} />);
+    const renderColors = colors.map((el) => <Color key={el.id} color={el} />);
     return (
         <ul className="main-sidebar">
             {renderColors}

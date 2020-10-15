@@ -17,3 +17,5 @@ export const ADD_IMAGE = "ADD_IMAGE";
 export const SET_IMAGE = "SET_IMAGE";
 export const NEXT_IMAGE = "NEXT_IMAGE";
 export const PREVIOUS_IMAGE = "PREVIOUS_IMAGE";
+
+export const RESET = "RESET";

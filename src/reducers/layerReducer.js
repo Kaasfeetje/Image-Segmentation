@@ -3,9 +3,15 @@ import {
     CHANGE_MASK_OPACITY,
     MOVE_LAYER_DOWN,
     MOVE_LAYER_UP,
+    NEXT_IMAGE,
+    PREVIOUS_IMAGE,
+    RESET,
+    SET_IMAGE,
 } from "../actions/types";
 
-export default (state = { layers: [], maskOpacity: 1.0 }, action) => {
+const INITIAL_STATE = { layers: [], maskOpacity: 1.0 };
+
+export default (state = INITIAL_STATE, action) => {
     let newLayers;
     switch (action.type) {
         case ADD_LAYER:
@@ -33,6 +39,11 @@ export default (state = { layers: [], maskOpacity: 1.0 }, action) => {
                 newLayers[action.payload + 1] = a;
             }
             return { ...state, layers: newLayers };
+        case RESET:
+        case NEXT_IMAGE:
+        case PREVIOUS_IMAGE:
+        case SET_IMAGE:
+            return INITIAL_STATE;
         default:
             return state;
     }

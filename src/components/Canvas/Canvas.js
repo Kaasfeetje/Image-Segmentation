@@ -73,7 +73,7 @@ function Canvas({
             (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)
         ) {
             e.preventDefault();
-            createMask();
+            createMask(image ? image.name : "mask.png");
         }
     };
 
@@ -134,6 +134,7 @@ function Canvas({
     const renderPaths = () => {
         return layers.map((el) => (
             <polygon
+                key={el.id}
                 points={paths[el.id]}
                 style={{
                     stroke: "none",

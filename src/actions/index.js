@@ -10,6 +10,7 @@ import {
     MOVE_LAYER_UP,
     NEXT_IMAGE,
     PREVIOUS_IMAGE,
+    RESET,
     SELECT_COLOR,
     SELECT_NAV,
     SET_IMAGE,
@@ -124,5 +125,11 @@ export const nextImage = () => {
 export const previousImage = () => {
     return {
         type: PREVIOUS_IMAGE,
+    };
+};
+
+export const reset = () => {
+    return {
+        type: RESET,
     };
 };

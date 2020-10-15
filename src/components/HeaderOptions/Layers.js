@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { changeMaskOpacity } from "../../actions";
+import { changeMaskOpacity, reset } from "../../actions";
 import "../../css/HeaderOptions/Layers.css";
 import LayerTable from "./LayerTable";
-function Layers({ layers, maskOpacity, changeMaskOpacity }) {
+function Layers({ layers, maskOpacity, changeMaskOpacity, reset }) {
     return (
         <div className="layers">
             <div className="layers-head">
@@ -19,7 +19,10 @@ function Layers({ layers, maskOpacity, changeMaskOpacity }) {
                     ></input>
                 </div>
                 <div className="layers-head--button">
-                    <button className="header--option header--option-dangerous">
+                    <button
+                        onClick={() => reset()}
+                        className="header--option header--option-dangerous"
+                    >
                         Clear All Layers
                     </button>
                 </div>
@@ -42,4 +45,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, { changeMaskOpacity })(Layers);
+export default connect(mapStateToProps, { changeMaskOpacity, reset })(Layers);

@@ -9,8 +9,10 @@ import { saveSvgAsPng } from "save-svg-as-png";
 //     document.body.removeChild(tempATag);
 // };
 
-export const createMask = () => {
+export const createMask = (name) => {
     const t = document.querySelector("#image").cloneNode(true);
     t.setAttribute("style", "backgroundImage:none");
-    saveSvgAsPng(t, "test.png");
+    t.childNodes.forEach((el) => (el.style.opacity = 1));
+    const filename = `${name.split(".")[0]}-mask.png`;
+    saveSvgAsPng(t, filename);
 };

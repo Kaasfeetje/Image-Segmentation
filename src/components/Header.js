@@ -5,12 +5,12 @@ import Dropdown from "./Dropdown";
 import Help from "./HeaderOptions/Help";
 import Layers from "./HeaderOptions/Layers";
 import UploadImage from "./HeaderOptions/UploadImage";
-import { selectNav } from "../actions";
+import { selectNav, reset } from "../actions";
 import { connect } from "react-redux";
 
 import { createMask } from "../saveMask";
 
-function Header({ image, selectNav }) {
+function Header({ image, selectNav, reset }) {
     const ref = useRef();
 
     useEffect(() => {
@@ -58,13 +58,18 @@ function Header({ image, selectNav }) {
                 <div>
                     <button
                         className="header--option"
-                        onClick={() => createMask()}
+                        onClick={() =>
+                            createMask(image ? image.name : "mask.png")
+                        }
                     >
                         Save
                     </button>
                 </div>
                 <div>
-                    <button className="header--option header--option-dangerous">
+                    <button
+                        onClick={() => reset()}
+                        className="header--option header--option-dangerous"
+                    >
                         Reset
                     </button>
                 </div>
@@ -77,4 +82,4 @@ const mapStateToProps = (state) => {
     return { image: state.images.images[state.images.activeImage] };
 };
 
-export default connect(mapStateToProps, { selectNav })(Header);
+export default connect(mapStateToProps, { selectNav, reset })(Header);

@@ -4,8 +4,15 @@ import { addImage, setImage } from "../../actions";
 import "../../css/HeaderOptions/UploadImage.css";
 function UploadImage({ imagesLength, addImage, setImage }) {
     const onUpload = (e) => {
+        readImage(e.target.files[0]);
+    };
+
+    // const onUploadMultiple = (e) => {
+    //     Object.values(e.target.files).forEach((el) => readImage(el));
+    // };
+
+    const readImage = (file) => {
         const reader = new FileReader();
-        const file = e.target.files[0];
         reader.onload = (function (aImg) {
             return function (e) {
                 let i = new Image();
@@ -29,6 +36,16 @@ function UploadImage({ imagesLength, addImage, setImage }) {
         <div className="upload-image">
             <h3 className="upload-image--header">Upload Image</h3>
             <input type="file" accept="image/*" onChange={onUpload}></input>
+
+            {/* <h3 className="upload-image--header">Upload Multiple</h3>
+            <input
+                type="file"
+                accept="image/*"
+                // webkitdirectory
+                // directory
+                multiple
+                onChange={onUploadMultiple}
+            ></input> */}
         </div>
     );
 }
