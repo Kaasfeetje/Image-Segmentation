@@ -1,15 +1,22 @@
 import React from "react";
 import { connect } from "react-redux";
 
+import { changeMaskOpacity } from "../../actions";
 import "../../css/HeaderOptions/Layers.css";
 import LayerTable from "./LayerTable";
-function Layers({ layers }) {
+function Layers({ layers, maskOpacity, changeMaskOpacity }) {
     return (
         <div className="layers">
             <div className="layers-head">
                 <div className="layers-head--mask">
                     <p>Mask Opacity</p>
-                    <input type="number"></input>
+                    <input
+                        type="number"
+                        min={0}
+                        max={100}
+                        onChange={(e) => changeMaskOpacity(e.target.value)}
+                        value={Math.round(maskOpacity * 100)}
+                    ></input>
                 </div>
                 <div className="layers-head--button">
                     <button className="header--option header--option-dangerous">
@@ -29,7 +36,10 @@ function Layers({ layers }) {
 }
 
 const mapStateToProps = (state) => {
-    return { layers: state.layers.layers };
+    return {
+        layers: state.layers.layers,
+        maskOpacity: state.layers.maskOpacity,
+    };
 };
 
-export default connect(mapStateToProps)(Layers);
+export default connect(mapStateToProps, { changeMaskOpacity })(Layers);

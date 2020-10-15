@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import "../css/Header.css";
 import Dropdown from "./Dropdown";
-import Advanced from "./HeaderOptions/Advanced";
+//import Advanced from "./HeaderOptions/Advanced";
 import Help from "./HeaderOptions/Help";
 import Layers from "./HeaderOptions/Layers";
 import UploadImage from "./HeaderOptions/UploadImage";
@@ -43,12 +43,12 @@ function Header({ image, selectNav }) {
                     Component={Layers}
                     id={1}
                 />
-                <Dropdown
+                {/* <Dropdown
                     text="Advanced"
                     selected={false}
                     Component={Advanced}
                     id={2}
-                />
+                /> */}
                 <Dropdown
                     text="Help"
                     selected={false}

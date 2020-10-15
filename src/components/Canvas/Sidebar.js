@@ -12,7 +12,7 @@ function Sidebar({ colors = [], addColor }) {
     return (
         <ul className="main-sidebar">
             {renderColors}
-            <button onClick={onAddButton}>Test</button>
+            <button onClick={onAddButton}>Add Class</button>
         </ul>
     );
 }

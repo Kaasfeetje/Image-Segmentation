@@ -21,6 +21,14 @@
     padding: 1rem;
 }
 
-.help-list li:nth-child(odd) {
+.help-list li:nth-child(even) {
     background-color: #404e4d;
+}
+
+#help-header {
+    font-weight: bold;
+    background-color: #646881;
+    border-bottom: 1px black solid;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
 }

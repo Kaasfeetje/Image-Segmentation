@@ -2,7 +2,7 @@ import { ADD_COLOR, SELECT_COLOR, UPDATE_COLOR } from "../actions/types";
 
 export default (
     state = {
-        colors: [{ name: "Placeholder", color: "#000", id: 0 }],
+        colors: [{ name: "Background Class", color: "#000", id: 0 }],
         selectedColor: 0,
     },
     action

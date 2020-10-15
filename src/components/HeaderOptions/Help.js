@@ -1,4 +1,4 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
 import "../../css/HeaderOptions/Help.css";
@@ -9,7 +9,7 @@ function Help() {
             <hr />
             <div className="help-list">
                 <ul>
-                    <li>
+                    <li id="help-header">
                         <span>Key</span>
                         <span>Action</span>
                     </li>
@@ -22,12 +22,12 @@ function Help() {
                         <span>Place Point</span>
                     </li>
                     <li>
-                        <span>Right Click</span> <span>Pan</span>
+                        <span>Alt+Left Click</span> <span>Pan</span>
                     </li>
                     <li>
                         <span>Ctrl+Z</span> <span>undo</span>
                     </li>
-                    <li>
+                    {/* <li>
                         <span>
                             <FontAwesomeIcon icon="arrow-up" />
                             <FontAwesomeIcon icon="arrow-down" />
@@ -49,16 +49,15 @@ function Help() {
                     <li>
                         <span>Alt + Click</span>
                         <span>Delete Layer</span>
-                    </li>
+                    </li> */}
                 </ul>
             </div>
             <h3>How to use</h3>
             <p style={{ marginBottom: "1rem" }}>
-                This is how I personally use this tool the quickest. First, I
-                label all the movables and lane markings. Next, I label the
-                road, and move it to the bottom with the layer palette. Then I
-                add a box of undrivable over the entire image and move it to the
-                bottom. Finally, I add the car section over the hood
+                Use left click to add a point. Use alt left click to pan around.
+                Use scrollwheel to zoom in and out. Use Ctrl + Z to undo the
+                last added point. Move layers up and down in the layers
+                dropdown.
             </p>
             <p>Version: 0.1.0</p>
         </div>

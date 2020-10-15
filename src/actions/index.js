@@ -3,6 +3,7 @@ import {
     ADD_IMAGE,
     ADD_LAYER,
     ADD_POINT,
+    CHANGE_MASK_OPACITY,
     DELETE_LAST_POINT,
     FINISH_PATH,
     MOVE_LAYER_DOWN,
@@ -71,11 +72,18 @@ export const selectColor = (id) => {
 };
 
 export const addLayer = (color, pathID) => {
-    const obj = { ...color, id: pathID, opacity: 0.5 };
+    const obj = { ...color, id: pathID };
 
     return {
         type: ADD_LAYER,
         payload: obj,
+    };
+};
+
+export const changeMaskOpacity = (opacity) => {
+    return {
+        type: CHANGE_MASK_OPACITY,
+        payload: opacity,
     };
 };
 

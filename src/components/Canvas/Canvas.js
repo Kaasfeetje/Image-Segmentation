@@ -20,6 +20,7 @@ function Canvas({
     activeColor,
     amountOfLayers,
     image,
+    maskOpacity,
     addLayer,
     updatePoint,
     deleteLastPoint,
@@ -51,15 +52,12 @@ function Canvas({
     }, [points]);
 
     const onKeyDown = (e) => {
-        console.log(e);
         if (e.key === "Enter") {
-            console.log("ENTER");
             addLayer(activeColor, amountOfLayers);
             finishPath();
         }
         if (e.ctrlKey) {
             if (e.key === "z") {
-                console.log("Ctrl + z");
                 deleteLastPoint();
             }
         }
@@ -75,7 +73,6 @@ function Canvas({
             (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)
         ) {
             e.preventDefault();
-            console.log("TRIED TO SAVE", image);
             createMask();
         }
     };
@@ -138,7 +135,11 @@ function Canvas({
         return layers.map((el) => (
             <polygon
                 points={paths[el.id]}
-                style={{ stroke: "none", fill: `${el.color}` }}
+                style={{
+                    stroke: "none",
+                    fill: `${el.color}`,
+                    opacity: maskOpacity,
+                }}
             ></polygon>
         ));
     };
@@ -183,6 +184,7 @@ const mapStateToProps = (state) => {
         activeColor: state.colors.colors[state.colors.selectedColor],
         amountOfLayers: state.layers.layers.length,
         image: state.images.images[state.images.activeImage],
+        maskOpacity: state.layers.maskOpacity,
     };
 };
 
