@@ -14,9 +14,9 @@ This tool is used for creating masks to train your segnets on.
 
 Controls can also be found in the help panel.
 
-Scroll           - Zoom
-Left Click       - Place Point
-Alt + Left Click - Pan
-A                - Previous Image (Warning current layers get removed)
-D                - Next Image (Warning current layers get removed)
-Ctrl + Z         - Undo last point
+Scroll           - Zoom  
+Left Click       - Place Point  
+Alt + Left Click - Pan  
+A                - Previous Image (Warning current layers get removed)  
+D                - Next Image (Warning current layers get removed)  
+Ctrl + Z         - Undo last point  
